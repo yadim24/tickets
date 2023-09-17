@@ -17,7 +17,7 @@ export default defineConfig(({ mode }) => {
         // Typechecking in development mode
         typescript: true,
         // Linting in production mode
-        ...((mode === 'production' || mode === 'staging') && {
+        ...(mode === 'production' && {
           eslint: {
             lintCommand:
               'eslint "./src/**/*.{ts,tsx}"' +
@@ -28,39 +28,7 @@ export default defineConfig(({ mode }) => {
       }),
     ],
     server: {
-      port: 3003,
-      // proxy: {
-      //   '/api': {
-      //     target: env.VITE_PROXY,
-      //     changeOrigin: true,
-      //   },
-      // },
-      watch: {
-        /**
-         * Для устранения бага "Uncaught SyntaxError: The requested
-         * module '/src/SomeComponent.ts?t=1684657356454' does not provide
-         * an export named 'SomeComponent'" нужно включить polling, это
-         * касается только Ubuntu. Проблема может быть решена как после
-         * очередного обновления VSCode или vite. В других редакторах на
-         * Ubuntu этот баг не проявляется. Проблема кроется в модуле
-         * chokidar (зависимость vite).
-         * https://vitejs.dev/config/server-options.html#server-watch
-         * Влияет на загрузку процессора, поэтому после обновлений VSCode или
-         * vite пробовать отключать этот параметр.
-         */
-        usePolling: env.XDG_SESSION_DESKTOP === 'ubuntu',
-      },
-    },
-    preview: {
-      port: 3080,
-      proxy: {
-        // При запуске vite preview, mode = production и используется
-        // .env.production
-        // '/api': {
-        //   target: env.VITE_PROXY,
-        //   changeOrigin: true,
-        // },
-      },
+      port: 3000,
     },
     build: {
       outDir: 'build',
