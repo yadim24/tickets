@@ -13,11 +13,14 @@
 .content-wrapper {
   margin: 0 auto;
   display: flex;
+  justify-content: center;
   gap: 24px;
-  max-width: 872px;
 }
 
 .filter-wrapper {
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
   border-radius: 6px;
   padding-bottom: 12px;
   filter: drop-shadow(0px 0px 3px rgba(190, 190, 192, 0.699));
@@ -47,13 +50,21 @@
   cursor: pointer;
 }
 
+.currency .radio {
+  display: none;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
 .currency:hover {
   background-color: #f2fcff;
   border: 1px solid #d7d9da;
   border-color: #2196f3;
 }
 
-.currency:active {
+.currency:has(.radio:checked) {
   background-color: #2196f3;
   border-color: #2196f3;
   color: #fff;
@@ -134,4 +145,74 @@
   border-radius: 2px;
   transform: rotate(45deg);
   opacity: 1;
+}
+
+.list-container {
+  border-radius: 6px;
+  filter: drop-shadow(0px 0px 3px rgba(190, 190, 192, 0.699));
+  background-color: #fff;
+  white-space: nowrap;
+}
+
+.ticket-wrapper {
+  display: flex;
+}
+
+.carrier {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid #d7d9daab;
+  gap: 32px;
+  padding: 32px 24px;
+}
+
+.carrier-logo {
+  max-width: 144px;
+}
+
+.price {
+  font-size: 16px;
+  line-height: 1.5em;
+  padding: 8px 48px;
+  border-radius: 8px;
+  background-color: #ff6d00;
+  color: #fff;
+  font-weight: 500;
+  filter: drop-shadow(0px 1px 3px rgba(156, 156, 156, 0.699));
+}
+
+.flight-detail-wrapper {
+  min-width: 448px;
+  padding: 32px;
+}
+
+.time-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 16px;
+}
+
+.time {
+  font-size: 40px;
+  line-height: 0.75em;
+}
+
+.transfer {
+  width: 100%;
+  color: #9da5a7;
+}
+
+.airport-wrapper {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.date-wrapper {
+  display: flex;
+  justify-content: space-between;
+  color: #9da5a7;
 }

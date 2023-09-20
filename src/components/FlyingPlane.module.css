@@ -1,0 +1,22 @@
+.plane-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.line {
+  background: #9da5a7;
+  background-clip: content-box;
+  height: 2px;
+  width: 100%;
+  padding-inline: 1px;
+  scale: 1 -0.5;
+  flex-grow: 1;
+}
+
+.icon {
+  width: 16px;
+  color: #9da5a7;
+  transform: rotate(45deg);
+}
