@@ -1,0 +1,21 @@
+.ticket-wrapper {
+  display: flex;
+  margin-bottom: 32px;
+  border-radius: 6px;
+  filter: drop-shadow(0px 0px 3px rgba(190, 190, 192, 0.699));
+  background-color: #fff;
+}
+
+.carrier {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid #d7d9daab;
+  gap: 32px;
+  padding: 32px 24px;
+}
+
+.carrier-logo {
+  max-width: 144px;
+  height: 48px;
+}
