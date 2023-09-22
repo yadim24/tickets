@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { FC } from 'react';
+import { FilterState, StopsValue } from 'types';
 import styles from './Stops.module.css';
-
-export type StopsValue = 'all' | 0 | 1 | 2 | 3;
 
 type StopsQty = {
   value: StopsValue;
@@ -34,19 +33,19 @@ const stopsQty: StopsQty[] = [
 
 type Props = {
   onChange: (stop: StopsValue) => void;
+  filter: FilterState;
 };
 
-export const Stops: FC<Props> = ({ onChange }) => {
+export const Stops: FC<Props> = ({ onChange, filter }) => {
   return (
     <div className={styles['transfer-wrapper']}>
       {stopsQty.map((stop) => (
-        <label key={stop.value} className={styles['checkbox-wrapper']}>
+        <label key={stop.name} className={styles['checkbox-wrapper']}>
           {stop.name}
           <input
             className={styles.checkbox}
             type="checkbox"
-            value={stop.value}
-            defaultChecked={stop.value === 'all'}
+            checked={filter.stops.includes(stop.value)}
             onChange={() => onChange(stop.value)}
           />
           <span className={styles.checkmark} />

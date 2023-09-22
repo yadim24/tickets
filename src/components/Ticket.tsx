@@ -1,16 +1,24 @@
 import { FC } from 'react';
-import { TTicket } from 'types';
+import { CurrencyValue, TTicket } from 'types';
 import { Button } from './Button';
 import { FlightDetails } from './FlightDetails';
 import styles from './Ticket.module.css';
 
 type Props = {
   ticket: TTicket;
+  currency: CurrencyValue;
 };
 
-export const Ticket: FC<Props> = ({ ticket }) => {
+const currencies = {
+  usd: 96.0419,
+  eur: 102.2485,
+};
+
+export const Ticket: FC<Props> = ({ currency, ticket }) => {
   let srcLogo;
   let altLogo;
+  let convertedPrice;
+  let currencyIcon;
 
   switch (ticket.carrier) {
     case 'TK':
@@ -38,6 +46,26 @@ export const Ticket: FC<Props> = ({ ticket }) => {
       altLogo = 'Unknown carrier';
   }
 
+  switch (currency) {
+    case 'USD':
+      convertedPrice = Math.round(ticket.price / currencies.usd).toLocaleString(
+        'ru-RU',
+      );
+      currencyIcon = '$';
+      break;
+
+    case 'EUR':
+      convertedPrice = Math.round(ticket.price / currencies.eur).toLocaleString(
+        'ru-RU',
+      );
+      currencyIcon = '€';
+      break;
+
+    default:
+      convertedPrice = ticket.price.toLocaleString('ru-RU');
+      currencyIcon = '₽';
+  }
+
   return (
     <div className={styles['ticket-wrapper']}>
       <div className={styles.carrier}>
@@ -45,7 +73,8 @@ export const Ticket: FC<Props> = ({ ticket }) => {
         <Button>
           Купить
           <br />
-          за {ticket.price.toLocaleString('ru-RU')}&#8381;
+          за {convertedPrice}
+          {currencyIcon}
         </Button>
       </div>
       <FlightDetails ticket={ticket} />

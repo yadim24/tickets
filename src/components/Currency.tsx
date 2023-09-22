@@ -1,17 +1,17 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import clsx from 'clsx';
 import { FC } from 'react';
+import { CurrencyValue, FilterState } from 'types';
 import styles from './Currency.module.css';
-
-export type CurrencyValue = 'RUR' | 'USD' | 'EUR';
 
 const currencyValue: CurrencyValue[] = ['RUR', 'USD', 'EUR'];
 
 type Props = {
   onChange: (currencyName: CurrencyValue) => void;
+  filter: FilterState;
 };
 
-export const Currency: FC<Props> = ({ onChange }) => {
+export const Currency: FC<Props> = ({ onChange, filter }) => {
   return (
     <div className={styles['currency-switcher']}>
       {currencyValue.map((currencyName) => (
@@ -29,6 +29,7 @@ export const Currency: FC<Props> = ({ onChange }) => {
             name="currency"
             value={currencyName}
             onChange={() => onChange(currencyName)}
+            checked={currencyName === filter.currency}
           />
         </label>
       ))}

@@ -1,5 +1,6 @@
 .flight-detail-wrapper {
   padding: 32px;
+  flex-grow: 1;
 }
 
 .time-wrapper {
