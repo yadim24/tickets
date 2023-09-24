@@ -1,8 +1,9 @@
 {
-  "name": "vite-starter",
+  "name": "tickets",
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://yadim24.github.io/tickets/",
   "scripts": {
     "app:start": "vite",
     "app:build:prod": "tsc && vite build",
