@@ -9,7 +9,7 @@
     "app:preview:prod": "vite preview",
     "app:lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "predeploy": "npm run app:build:prod",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "clsx": "^2.0.0",
