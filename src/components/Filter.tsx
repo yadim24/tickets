@@ -7,7 +7,7 @@ import { Stops } from './Stops';
 
 type Props = {
   onChangeCurrency: (currencyName: CurrencyValue) => void;
-  onChangeStops: (stop: StopsValue) => void;
+  onChangeStops: (stops: StopsValue[]) => void;
   filter: FilterState;
 };
 
@@ -19,9 +19,9 @@ export const Filter: FC<Props> = ({
   return (
     <div className={styles['filter-wrapper']}>
       <h2 className={styles['filter-headers']}>ВАЛЮТА</h2>
-      <Currency filter={filter} onChange={onChangeCurrency} />
+      <Currency filter={filter.currency} onChange={onChangeCurrency} />
       <h2 className={styles['filter-headers']}>КОЛИЧЕСТВО ПЕРЕСАДОК</h2>
-      <Stops filter={filter} onChange={onChangeStops} />
+      <Stops filter={filter.stops} onChange={onChangeStops} />
     </div>
   );
 };

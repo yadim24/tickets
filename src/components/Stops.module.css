@@ -13,7 +13,7 @@
 
 .checkbox-wrapper .checkbox:checked ~ .checkmark {
   background-color: #f1fcff;
-  border-color: #2196f3;
+  border-color: var(--secondary);
 }
 
 .checkbox {
@@ -49,7 +49,7 @@
   top: 5px;
   width: 8px;
   height: 12px;
-  border: solid #2196f3;
+  border: solid var(--secondary);
   border-width: 0 3px 3px 0;
   border-radius: 2px;
   transform: rotate(45deg);

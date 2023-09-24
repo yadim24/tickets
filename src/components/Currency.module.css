@@ -11,11 +11,11 @@
   border: 1px solid #d7d9da;
   font-size: 16px;
   font-weight: 700;
-  color: #2196f3;
+  color: var(--secondary);
   cursor: pointer;
 }
 
-.currency .radio {
+.radio {
   display: none;
   opacity: 0;
   cursor: pointer;
@@ -26,12 +26,12 @@
 .currency:hover {
   background-color: #f2fcff;
   border: 1px solid #d7d9da;
-  border-color: #2196f3;
+  border-color: var(--secondary);
 }
 
 .currency:has(.radio:checked) {
-  background-color: #2196f3;
-  border-color: #2196f3;
+  background-color: var(--secondary);
+  border-color: var(--secondary);
   color: #fff;
 }
 
@@ -46,7 +46,7 @@
 }
 
 .currency-rur:hover {
-  border-right: 1px solid #2196f3;
+  border-right: 1px solid var(--secondary);
 }
 
 .currency-eur {

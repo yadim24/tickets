@@ -19,30 +19,8 @@ export function App(): ReactElement {
     setFilter(newFilter);
   };
 
-  const onChangeStops = (stop: StopsValue): void => {
-    let newStops: StopsValue[] | [];
-
-    if (filter.stops.includes(stop) && stop === 'all') {
-      newStops = [];
-    }
-
-    if (filter.stops.includes(stop)) {
-      if (stop === 'all') {
-        newStops = [];
-      } else {
-        newStops = filter.stops.filter((item) => item !== stop);
-      }
-    } else if (
-      stop === 'all' ||
-      (filter.stops.length === 3 && !filter.stops.includes('all'))
-    ) {
-      newStops = initStops;
-    } else {
-      newStops = [...filter.stops, stop];
-    }
-
-    const filterStops = { ...filter, stops: newStops };
-    setFilter(filterStops);
+  const onChangeStops = (stops: StopsValue[]): void => {
+    setFilter({ ...filter, stops });
   };
 
   return (

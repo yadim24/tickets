@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { FC } from 'react';
-import { FilterState, StopsValue } from 'types';
+import { StopsValue } from 'types';
 import styles from './Stops.module.css';
 
 type StopsQty = {
@@ -32,8 +32,8 @@ const stopsQty: StopsQty[] = [
 ];
 
 type Props = {
-  onChange: (stop: StopsValue) => void;
-  filter: FilterState;
+  onChange: (stops: StopsValue[]) => void;
+  filter: StopsValue[];
 };
 
 export const Stops: FC<Props> = ({ onChange, filter }) => {
@@ -45,8 +45,42 @@ export const Stops: FC<Props> = ({ onChange, filter }) => {
           <input
             className={styles.checkbox}
             type="checkbox"
-            checked={filter.stops.includes(stop.value)}
-            onChange={() => onChange(stop.value)}
+            checked={filter.includes(stop.value)}
+            onChange={(e) => {
+              const isChecked = e.target.checked;
+
+              if (isChecked && stop.value === 'all') {
+                onChange(stopsQty.map((item) => item.value));
+
+                return;
+              }
+
+              if (!isChecked && stop.value === 'all') {
+                onChange([]);
+
+                return;
+              }
+
+              if (stop.value !== 'all' && filter.includes(stop.value)) {
+                onChange(
+                  filter.filter(
+                    (item) => item !== stop.value && item !== 'all',
+                  ),
+                );
+
+                return;
+              }
+
+              if (
+                stop.value !== 'all' &&
+                !filter.includes(stop.value) &&
+                filter.length === 3
+              ) {
+                onChange([...filter, stop.value, 'all']);
+              } else {
+                onChange([...filter, stop.value]);
+              }
+            }}
           />
           <span className={styles.checkmark} />
         </label>

@@ -1,14 +1,14 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import clsx from 'clsx';
 import { FC } from 'react';
-import { CurrencyValue, FilterState } from 'types';
+import { CurrencyValue } from 'types';
 import styles from './Currency.module.css';
 
 const currencyValue: CurrencyValue[] = ['RUR', 'USD', 'EUR'];
 
 type Props = {
   onChange: (currencyName: CurrencyValue) => void;
-  filter: FilterState;
+  filter: CurrencyValue;
 };
 
 export const Currency: FC<Props> = ({ onChange, filter }) => {
@@ -29,7 +29,7 @@ export const Currency: FC<Props> = ({ onChange, filter }) => {
             name="currency"
             value={currencyName}
             onChange={() => onChange(currencyName)}
-            checked={currencyName === filter.currency}
+            checked={currencyName === filter}
           />
         </label>
       ))}
