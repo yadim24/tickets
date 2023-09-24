@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import styles from 'App.module.css';
 import { Filter } from 'components/Filter';
 import { TicketList } from 'components/TicketList';
