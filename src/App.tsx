@@ -25,7 +25,7 @@ export function App(): ReactElement {
   return (
     <>
       <header className={styles['logo-wrapper']}>
-        <img className={styles.logo} src="/airplane-logo.png" alt="logo" />
+        <img className={styles.logo} src="airplane-logo.png" alt="logo" />
       </header>
       <main className={styles['content-wrapper']}>
         <Filter
