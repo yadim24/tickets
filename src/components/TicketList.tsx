@@ -16,7 +16,7 @@ export const TicketList: FC<Props> = ({ currency, tickets }) => {
           <Ticket key={ticket.id} currency={currency} ticket={ticket} />
         ))
       ) : (
-        <div className={styles.skeleton}>Билетов не найдено</div>
+        <div className={styles.skeleton}>Билеты не найдены</div>
       )}
     </div>
   );
